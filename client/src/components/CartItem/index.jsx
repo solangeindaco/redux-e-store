@@ -1,16 +1,11 @@
-import { useStoreContext } from "../../utils/GlobalState";
-import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
-import { idbPromise } from "../../utils/helpers";
+import { stateActions } from "../../utils/stateSlice";
 
 const CartItem = ({ item }) => {
 
-  const [, dispatch] = useStoreContext();
-
   const removeFromCart = item => {
-    dispatch({
-      type: REMOVE_FROM_CART,
-      _id: item._id
-    });
+    // new redux
+    dispatch(stateActions.removeFromCart(item._id));
+
     idbPromise('cart', 'delete', { ...item });
 
   };
@@ -18,18 +13,13 @@ const CartItem = ({ item }) => {
   const onChange = (e) => {
     const value = e.target.value;
     if (value === '0') {
-      dispatch({
-        type: REMOVE_FROM_CART,
-        _id: item._id
-      });
+      // new redux
+      dispatch(stateActions.removeFromCart(item._id));
       idbPromise('cart', 'delete', { ...item });
 
     } else {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: item._id,
-        purchaseQuantity: parseInt(value)
-      });
+      // new Redux
+      dispatch(stateActions.updateCartQuantity({ _id: item._id, purchaseQuantity: parseInt(value) }));
       idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
 
     }
