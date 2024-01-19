@@ -12,7 +12,7 @@ import Nav from './components/Nav';
 import { Provider } from 'react-redux';
 import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { stateReducer } from './utils/stateSlice';
+import {stateReducer} from './utils/stateSlice';
 
 
 const rootReducer = combineReducers({

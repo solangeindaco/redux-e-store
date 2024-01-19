@@ -10,8 +10,16 @@ import {
   TOGGLE_CART,
 } from './actions';
 
+const INITIAL_STATE = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: '',
+};
+
 // TODO: To get a better understand of how a reducer works - add comments to the various actions in the reducer
-export const reducer = (state, action) => {
+export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
     // Your comment here
@@ -86,7 +94,9 @@ export const reducer = (state, action) => {
       };
 
     // TODO: Add a comment describing what the default case is for
-    // Your comment here
+    //   in case we dont have a matching action type
+    //   we return the current state by default in order to not lose any previous state at all
+    
     default:
       return state;
   }

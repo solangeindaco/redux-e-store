@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const _STATE = {
+const INITIAL_STATE = {
   products: [],
   cart: [],
   cartOpen: false,
@@ -10,7 +10,7 @@ const _STATE = {
 
 const stateSlice = createSlice({
   name: "globalState",
-  State: _STATE,
+  initialState: INITIAL_STATE,
   // this will create all of our "action creators"
   // and make our reducer that this "slice" will use
   // to automatically listen for the actionTypes that we will be dispatching
