@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers";
 import { idbPromise } from "../../utils/helpers";
 import { useSelector, useDispatch } from 'react-redux';
+import { stateActions } from '../../utils/stateSlice';
 
 function ProductItem(item) {
   const state = useSelector((state) => state.globalState);

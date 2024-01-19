@@ -1,6 +1,10 @@
 import { stateActions } from "../../utils/stateSlice";
+import { useDispatch } from 'react-redux';
+import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
+
+  const dispatch = useDispatch();
 
   const removeFromCart = item => {
     // new redux
