@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
+import { useSelector, useDispatch } from 'react-redux';
+import { stateActions } from '../../utils/stateSlice';
 
 function CategoryMenu() {
+  const state = useSelector((state) => state.globalState);
   const dispatch = useDispatch();
 
   const { categories } = state;
