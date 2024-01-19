@@ -17,7 +17,7 @@ I learn:
 ## Installation
 
 Repository URL: https://github.com/solangeindaco/redux-e-store  
-Deployed application: https://graphql-book-search-eng.onrender.com/   
+Deployed application: https://redux-e-store.onrender.com/      
 
 ## Usage
 
