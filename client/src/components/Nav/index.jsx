@@ -1,7 +1,18 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { stateActions } from '../../utils/stateSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { idbPromise } from '../../utils/helpers';
 
 function Nav() {
+  const state = useSelector((state) => state.globalState);
+  const dispatch = useDispatch();
+
+  function logout() {
+    dispatch(stateActions.clearCart(state));
+    idbPromise('cart', 'clear');
+    Auth.logout();
+  }
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -13,8 +24,7 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <a href="/" onClick={logout}>
               Logout
             </a>
           </li>
